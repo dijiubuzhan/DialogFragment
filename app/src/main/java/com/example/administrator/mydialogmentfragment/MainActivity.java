@@ -1,0 +1,41 @@
+package com.example.administrator.mydialogmentfragment;
+
+import android.content.DialogInterface;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Html;
+import android.view.View;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void show(View view) {
+             new DialogFramentBuilder(this)
+                .setFragmentManager(getSupportFragmentManager())
+                .title("title")
+                .content("here is the message")
+                .positiveText(getString(android.R.string.ok))
+                .onPositive(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(),"click ok",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                })
+                .negativeText(getString(android.R.string.cancel))
+                .onNegative(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(),"click cancel",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                })
+                .show("test");
+    }
+}
