@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
 public class NormalTextDialogFragment extends DialogFragment {
@@ -21,6 +22,7 @@ public class NormalTextDialogFragment extends DialogFragment {
     private String negativeButtonText;
     private String title;
     private String msg;
+    private static NormalTextDialogFragment frag;
     /**
      * 创建Dialog时调用
      */
@@ -120,7 +122,12 @@ public class NormalTextDialogFragment extends DialogFragment {
 
     public static NormalTextDialogFragment newInstance(String title, String msg, String ok,
                                                        String cancel) {
-        final NormalTextDialogFragment frag = new NormalTextDialogFragment();
+        if (frag==null) {
+            frag = new NormalTextDialogFragment();
+        }else if(frag.isVisible()){
+            frag.dismiss();
+        }
+
         Bundle args = new Bundle();
         args.putString(DIALOG_TITLE_KEY, title);
         args.putString(DIALOG_MSG_KEY, msg);

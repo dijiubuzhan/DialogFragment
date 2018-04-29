@@ -158,7 +158,11 @@ public class DialogFramentBuilder {
         if (!TextUtils.isEmpty(negativeButtonText)) {
             dialogFragment.setNegativeButton(negativeButtonText,onNegativeCallback);
         }
-        dialogFragment.show(manager, tag);
+        dialogFragment.setCancelable(false);
+        if(!dialogFragment.isAdded() && !dialogFragment.isVisible() && !dialogFragment.isRemoving())
+        {
+            dialogFragment.show(manager.beginTransaction(),tag);
+        }
         return dialogFragment;
     }
 

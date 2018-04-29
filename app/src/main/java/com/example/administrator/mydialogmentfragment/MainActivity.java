@@ -37,5 +37,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .show("test");
+             /*DialogUtil.getDialogInstance().showDoubleDialog(this,"title", "here is the message", getString(android.R.string.ok), getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
+                 @Override
+                 public void onClick(DialogInterface dialogInterface, int i) {
+                     dialogInterface.dismiss();
+                 }
+             });*/
     }
 }
