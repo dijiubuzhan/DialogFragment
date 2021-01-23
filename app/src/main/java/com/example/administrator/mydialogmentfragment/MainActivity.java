@@ -17,9 +17,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: ");
         go();
+        goDevelop();
     }
 
     private void go() {
+
+    }
+
+    private void goDevelop() {
 
     }
 
